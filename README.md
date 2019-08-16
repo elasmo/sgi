@@ -3,8 +3,7 @@
 | What | Where | Description |
 |------|-------|-------------|
 | Home directories | `/usr/people/` |
-| Logs | `/var/adm/` | Contains files such as `SYSLOG`, `lastlog`, `wtmp` and `crash` |
-| 
+| Logs | `/var/adm/` | Contains files such as `SYSLOG`, `lastlog`, `wtmp` and `crash` | 
 
 ## Networking
 Set hostname:
@@ -69,3 +68,6 @@ TODO
 * [xli-1.16: description + notes](https://web.archive.org/web/20100120130550/http://freeware.sgi.com/Installable/xli-1.16-sgipl1.html)
 * [BACKGROUND(1)](http://nixdoc.net/man-pages/IRIX/man1/background.1.html)
 * [Use Custom Background on Irix](https://wiki.preterhuman.net/Use_Custom_Background_on_Irix)
+* [SGI graphics Frequently Asked Questions (FAQ)](https://www.opennet.ru/docs/FAQ/OS/SGI/graphics.html)
+* [Using the Command (PROM) Monitor](http://csweb.cs.wfu.edu/~torgerse/Kokua/SGI/007-2859-021/sgi_html/ch09.html)
+* [Indy NVRAM MAC Programming](https://wiki.preterhuman.net/Indy_NVRAM_reprogramming)
