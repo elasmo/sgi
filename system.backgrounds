@@ -1,0 +1,200 @@
+background "Solid"
+   command "-solid %1"
+   default "-solid sgiLightBlue"
+
+background "Reef (HDTV)"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm -colors #467A7A #4B7E7E #518483 #669A9A"
+   readok "/usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm"
+
+background "Sky (HDTV)"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm -colors #5E82AA #6386AD #678AB0 #7E9EC2"
+   readok "/usr/include/X11/bitmaps/sgidesktop/hdtvbg.xpm"
+
+background "Sprinkle"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/sgiwall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/sgiwall.xpm -colors #669a9a #619292 #588d6f #47777f"
+   readok "/usr/include/X11/bitmaps/sgidesktop/sgiwall.xpm"
+
+background "Citrus Citrus"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #fe7a02 #fe7302 #fe8202 #fe9a02"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Camouflage"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #6a6a16 #707018 #76761a #8a8a22"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Sand"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #b6b67a #baba7d #bebe83 #cece9a"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Reef"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #467a7a #4b7e7e #518483 #669a9a"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Midnight"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #12123a #16163c #1a1a42 #222256"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Iron"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bg03.xpm -colors #2a2a3a #2e2e3b #323241 #464656"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bg03.xpm"
+
+background "Linen"
+   command "-bitmap /usr/include/X11/bitmaps/sgidesktop/linen.xbm -bg %1 -fg %2 "
+   default "-bitmap /usr/include/X11/bitmaps/sgidesktop/linen.xbm -bg #438691 -fg #5f5f5a"
+   readok "/usr/include/X11/bitmaps/sgidesktop/linen.xbm"
+
+background "Vertigo"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/dotsmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/dotsmall.xpm -colors #c3c3c3 #adadad #979797 #7c7c7c"
+   readok "/usr/include/X11/bitmaps/sgidesktop/dotsmall.xpm"
+
+background "Bulge"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/bulgesmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/bulgesmall.xpm -colors cornsilk3 ivory3 cornsilk2 grey72"
+   readok "/usr/include/X11/bitmaps/sgidesktop/bulgesmall.xpm"
+
+background "Granite"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/granite2small.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/granite2small.xpm -colors #b98e8e grey75 grey95 grey40"
+   readok "/usr/include/X11/bitmaps/sgidesktop/granite2small.xpm"
+
+background "Verde Marble"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/greenmarblesmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/greenmarblesmall.xpm -colors #101033 #306636 #445b43 #000000"
+   readok "/usr/include/X11/bitmaps/sgidesktop/greenmarblesmall.xpm"
+
+background "Luna Pearl"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/lunapearlsmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/lunapearlsmall.xpm -colors #6d6d6d #a5a5a5 #ffffff #1c1c1c"
+   readok "/usr/include/X11/bitmaps/sgidesktop/lunapearlsmall.xpm"
+
+background "Nebula"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/marble3small.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/marble3small.xpm -colors #47547b #7b7b7b #7b8a9b #565656"
+   readok "/usr/include/X11/bitmaps/sgidesktop/marble3small.xpm"
+
+background "Tide Pool"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/marble5small.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/marble5small.xpm -colors lightsteelblue4 black #222255 dodgerblue4"
+   readok "/usr/include/X11/bitmaps/sgidesktop/marble5small.xpm"
+
+background "Rhodo"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/rhodolitesmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/rhodolitesmall.xpm -colors grey72 #9e5b33 white #603417"
+   readok "/usr/include/X11/bitmaps/sgidesktop/rhodolitesmall.xpm"
+
+background "Rockface"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/rockfacesmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/rockfacesmall.xpm -colors grey74 grey57 black grey25" 
+   readok "/usr/include/X11/bitmaps/sgidesktop/rockfacesmall.xpm"
+
+background "Cirrostratus"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/siennasmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/siennasmall.xpm -colors #a2a2a2 #828282 #ffffff #101010" 
+   readok "/usr/include/X11/bitmaps/sgidesktop/siennasmall.xpm"
+
+background "Scallop"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/scallopsmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/scallopsmall.xpm -colors grey80 grey70 grey95 grey60" 
+   readok "/usr/include/X11/bitmaps/sgidesktop/scallopsmall.xpm"
+
+background "Brain"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/brainsmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/brainsmall.xpm -colors grey85 grey80 grey90 lightcyan3" 
+   readok "/usr/include/X11/bitmaps/sgidesktop/brainsmall.xpm"
+
+background "Cracked"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/crackssmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/crackssmall.xpm -colors honeydew3 lightcyan3 honeydew2 lightcyan4" 
+   readok "/usr/include/X11/bitmaps/sgidesktop/crackssmall.xpm"
+
+background "Moorish"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/moorish2.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/moorish2.xpm -colors #191919 #355986 #6299b8 #72f4ff"
+   readok "/usr/include/X11/bitmaps/sgidesktop/moorish2.xpm"
+
+background "Swirl"
+   command "-xpm /usr/include/X11/bitmaps/sgidesktop/swirlsmall.xpm -colors %1 %2 %3 %4"
+   default "-xpm /usr/include/X11/bitmaps/sgidesktop/swirlsmall.xpm -colors #74b3db #5d90b0 #c6c6c6 #5c5c5c"
+   readok "/usr/include/X11/bitmaps/sgidesktop/swirlsmall.xpm"
+
+background "Burlap"
+   command "-bitmap /usr/include/X11/bitmaps/grainy -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/grainy -bg navajowhite4 -fg navajowhite3"
+   readok "/usr/include/X11/bitmaps/grainy"
+
+background "Scatter"
+   command "-bitmap /usr/include/X11/bitmaps/granite -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/granite -bg lightsteelblue3 -fg honeydew1"
+   readok "/usr/include/X11/bitmaps/granite"
+
+background "Scribble"
+   command "-bitmap /usr/include/X11/bitmaps/sgidesktop/scribble  -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/sgidesktop/scribble  -bg chocolate4 -fg antiquewhite2"
+   readok "/usr/include/X11/bitmaps/sgidesktop/scribble"
+
+background "Fabric"
+   command "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern2a  -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern2a  -bg antiquewhite -fg burlywood4"
+   readok "/usr/include/X11/bitmaps/sgidesktop/pattern2a"
+
+background "Crumpled"
+   command "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern3  -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern3  -bg slategray -fg slategray1"
+   readok "/usr/include/X11/bitmaps/sgidesktop/pattern3"
+
+background "Wicker"
+   command "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern4b  -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/sgidesktop/pattern4b  -bg indigo -fg gainsboro"
+   readok "/usr/include/X11/bitmaps/sgidesktop/pattern4b"
+
+background "Dither 1x1"
+   command "-bitmap /usr/include/X11/bitmaps/1x1 -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/1x1 -bg oldlace -fg olivedrab4"
+   readok "/usr/include/X11/bitmaps/1x1"
+
+background "Dither 2x2"
+   command "-bitmap /usr/include/X11/bitmaps/2x2 -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/2x2 -bg beige -fg bisque3"
+   readok "/usr/include/X11/bitmaps/2x2"
+
+background "Escher Knot"
+   command "-bitmap /usr/include/X11/bitmaps/escherknot -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/escherknot -bg black -fg blanchedalmond"
+   readok "/usr/include/X11/bitmaps/escherknot"
+
+background "Scales"
+   command "-bitmap /usr/include/X11/bitmaps/scales -bg %1 -fg %2"
+   default "-bitmap /usr/include/X11/bitmaps/scales -bg khaki4 -fg lemonchiffon"
+   readok "/usr/include/X11/bitmaps/scales"
+
+# These backgrounds do not run on all platforms.
+
+background "Twilight"
+   command "-execute /usr/sbin/twilight"
+   default "-execute /usr/sbin/twilight"
+   exeok "/usr/sbin/twilight"
+
+background "SGI Logo"
+   command "-execute /usr/demos/General_Demos/powerflip/powerflip -Rs -o -0.3426,-0.2307,-0.1561,0.8971 -p 0.5316,0.3363,-0.3676 -b /usr/demos/General_Demos/powerflip/data/background3.defs /usr/demos/General_Demos/powerflip/data/logo.ydl"
+   default "-execute /usr/demos/General_Demos/powerflip/powerflip -Rs -o -0.3426,-0.2307,-0.1561,0.8971 -p 0.5316,0.3363,-0.3676 -b /usr/demos/General_Demos/powerflip/data/background3.defs /usr/demos/General_Demos/powerflip/data/logo.ydl"
+   exeok "/usr/demos/General_Demos/powerflip/powerflip"
+   readok "/usr/demos/General_Demos/powerflip/data/background3.defs"
+   readok "/usr/demos/General_Demos/powerflip/data/logo.ydl"
+
+background "CPU Eater"
+   command "-execute /usr/demos/General_Demos/powerflip/powerflip -R -o -0.3426,-0.2307,-0.1561,0.8971 -p 0.5316,0.3363,-0.3676 -b /usr/demos/General_Demos/powerflip/data/background3.defs /usr/demos/General_Demos/powerflip/data/logo.ydl"
+   default "-execute /usr/demos/General_Demos/powerflip/powerflip -R -o -0.3426,-0.2307,-0.1561,0.8971 -p 0.5316,0.3363,-0.3676 -b /usr/demos/General_Demos/powerflip/data/background3.defs /usr/demos/General_Demos/powerflip/data/logo.ydl"
+   exeok "/usr/demos/General_Demos/powerflip/powerflip"
+   readok "/usr/demos/General_Demos/powerflip/data/background3.defs"
+   readok "/usr/demos/General_Demos/powerflip/data/logo.ydl"
+
