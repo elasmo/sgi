@@ -25,6 +25,9 @@ Installation:
 ```
 inst -f <foo.tardist>
 ``` 
+# Random jazz
+IRIX 6.5.22 uses a crypt() implementation from 1988. A 31 years old
+rock solid DES and Enigma implementation.
 
 # Resources
 * http://www.sgidepot.co.uk/sgi.html
@@ -33,3 +36,4 @@ inst -f <foo.tardist>
 * [xli-1.16: description + notes](https://web.archive.org/web/20100120130550/http://freeware.sgi.com/Installable/xli-1.16-sgipl1.html)
 * [BACKGROUND(1)](http://nixdoc.net/man-pages/IRIX/man1/background.1.html)
 * [Use Custom Background on Irix](https://wiki.preterhuman.net/Use_Custom_Background_on_Irix)
+* [SGI/IRIX CDs](https://jrra.zone/sgi/)
