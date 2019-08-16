@@ -1,6 +1,22 @@
 # Home directory
 `/usr/people`
 
+# Networking
+Set hostname:
+
+`/etc/sys_id`
+
+Set DNS:
+
+`/etc/resolv.conf`
+
+List enabled and disabled services and daemons:
+
+`chkconfig`
+
+# Various
+Get release name: `uname -R`
+
 # tardist
 Tar based archive format used for distribution and installation of
 IRIX software.
