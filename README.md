@@ -13,3 +13,4 @@ inst -f <foo.tardist>
 # Resources
 * http://www.sgidepot.co.uk/sgi.html
 * https://irix.cc
+* [Building IRIX tardists](https://vanalboom.org/node/7)
