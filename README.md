@@ -2,7 +2,7 @@
 `/usr/people`
 
 # tardist
-Tar based archive format used to for distribution and installation of
+Tar based archive format used for distribution and installation of
 IRIX software.
 
 Installation:
