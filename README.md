@@ -63,6 +63,9 @@ TODO
 
 # Technical specifications
 ## Challenge S
+Basically a server version of an Indy. Does not have an installed graphics card.
+Connect using serial terminal, e.g. `cu -s 9600 -l /dev/cuaU0`.
+
 ```
 >> hinv
                    System: IP22
