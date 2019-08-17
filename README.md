@@ -61,6 +61,18 @@ By selecting *Enter Command Monitor*, you will land in the PROM CLI, which allow
 ## NVRAM MAC Recovery
 TODO
 
+# Technical specifications
+## Challenge S
+```
+>> hinv
+                   System: IP22
+                Processor: 175 Mhz R4400, with FPU
+     Primary I-cache size: 16 Kbytes
+     Primary D-cache size: 16 Kbytes
+     Secondary cache size: 1024 Kbytes
+              Memory size: 192 Mbytes
+                SCSI Disk: scsi(0)disk(1)
+```
 # Resources
 * http://www.sgidepot.co.uk/sgi.html
 * https://irix.cc
