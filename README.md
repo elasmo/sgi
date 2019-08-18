@@ -61,8 +61,11 @@ By selecting *Enter Command Monitor*, you will land in the PROM CLI, which allow
 ## NVRAM MAC Recovery
 TODO
 
-# Technical specifications
+# Machine specifics
+
 ## Challenge S
+TODO: Install OS
+
 Basically a server version of an Indy. Does not have an installed graphics card.
 Connect using serial terminal, e.g. `cu -s 9600 -l /dev/cuaU0`.
 
@@ -78,6 +81,8 @@ Connect using serial terminal, e.g. `cu -s 9600 -l /dev/cuaU0`.
 ```
 
 ## Indy
+TODO: Fix Dallas battery, install OS
+
 Defective dallas chip (i.e. doesn't remember MAC address etc.)
 
 ```
@@ -97,6 +102,70 @@ Unable to execute bootp():
               Memory size: 160 Mbytes
                  Graphics: Indy 8-bit
                     Audio: Iris Audio Processor: version A2 revision 4.1.0
+```
+
+## Indy 2nd
+The most high end of all the Indy's.
+
+Probably a defective Dallas chip, the MAC address shows up as 'bad'.
+
+```
+>> hinv
+                   System: IP22
+                Processor: 180 Mhz R5000, with FPU
+     Primary I-cache size: 32 Kbytes
+     Primary D-cache size: 32 Kbytes
+     Secondary cache size: 512 Kbytes
+              Memory size: 256 Mbytes
+                 Graphics: Indy 24-bit
+                SCSI Disk: scsi(0)disk(1)
+                    Audio: Iris Audio Processor: version A2 revision 4.1.0
+```
+
+Boot from console
+```
+>> auto
+
+
+                           Starting up the system...
+
+Loading scsi(0)disk(1)rdisk(0)partition(8)/sash: 136336+22752+3248+341792+49344d+4620+6880 entry: 0x97fa5ee0
+IRIX Release 6.5 IP22 Version 10070055 System V
+Copyright 1987-2003 Silicon Graphics, Inc.
+All Rights Reserved.
+
+ec0: machine has bad ethernet address: 04:91:a2:91:c3:23
+The system is coming up.
+
+network: WARNING: Failed to configure ec0 as indy1.
+network: WARNING: Cannot access primary interface, ec0.
+Using standalone network mode.
+ifconfig: ioctl (SIOCGIFFLAGS): no such interface
+Warning:  Internet Gateway web server running as root.
+          Use "chkconfig webface_apache off" to disable.
+inst: 
+inst: Software installation has installed new configuration files and/or saved
+inst: the previous version in some cases.  You may need to update or merge
+inst: old configuration files with the newer versions.  See the "Updating
+inst: Configuration Files" section in the versions(1M) manual page for details.
+inst: The shell command "versions changed" will list the affected files.
+inst: 
+inst: These directories were unable to be moved properly during the
+inst: installation process.  Check for any user-modified files, then
+inst: delete the directories.
+inst:    /usr/include/Vk.O
+Privilege separation user sshd does not exist
+
+
+
+indy1 console login: root
+IRIX Release 6.5 IP22 indy1
+Copyright 1987-2003 Silicon Graphics, Inc. All Rights Reserved.
+Last login: Sun Nov  8 03:12:54 CET 2009 on :0
+TERM = (vt100)
+indy1 5# uname -aR
+IRIX indy1 6.5 6.5.22m 10070055 IP22
+...
 ```
 
 # Resources
