@@ -76,6 +76,29 @@ Connect using serial terminal, e.g. `cu -s 9600 -l /dev/cuaU0`.
               Memory size: 192 Mbytes
                 SCSI Disk: scsi(0)disk(1)
 ```
+
+## Indy
+Defective dallas chip (i.e. doesn't remember MAC address etc.)
+
+```
+>> setenv netaddr 10.0.0.2
+>> bootp():
+ec0: bad ethernet address ff:ff:ff:ff:ff:ff
+Unable to execute bootp():
+```
+
+```
+>> hinv
+                   System: IP22
+                Processor: 134 Mhz R4600, with FPU
+     Primary I-cache size: 16 Kbytes
+     Primary D-cache size: 16 Kbytes
+     Secondary cache size: 512 Kbytes
+              Memory size: 160 Mbytes
+                 Graphics: Indy 8-bit
+                    Audio: Iris Audio Processor: version A2 revision 4.1.0
+```
+
 # Resources
 * http://www.sgidepot.co.uk/sgi.html
 * https://irix.cc
