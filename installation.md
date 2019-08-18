@@ -1,36 +1,44 @@
 # Bootp server preperations
 ## Unpack warezz
+
+Foundation, part 1 and 2
 ```
 mount -o loop -t efs IRIX\ 6.5\ Foundation\ 1.img tmp
-cp -a tmp f1
-umount tmp
+cp -a tmp f1 && umount tmp
+
 mount -o loop -t efs IRIX\ 6.5\ Foundation\ 2.img tmp
-cp -a tmp f2
-umount tmp
-mount -o loop -t efs IRIX\ 6.5\ Development\ Foundation.img tmp
-cp -a tmp devf
-umount tmp
-mount -o loop -t efs IRIX\ 6.5\ Development\ Libraries.img tmp
-cp -a tmp devl
-umount tmp
-unzip "Irix 6.5.30_cdimages.zip"
-mount -o loop -t efs Irix\ 6.5.30_cdimages/Applications.image tmp/
-cp -a tmp apps
-umount tmp
-mount -o loop -t efs Irix\ 6.5.30_cdimages/Complementary_Applications.image tmp
-cp -a tmp capps
-umount tmp
-mount -o loop -t efs Irix\ 6.5.30_cdimages/Instalation_Tools_and_Overlays1.image tmp
-cp -a tmp ovl1
-umount tmp
-mount -o loop -t efs Irix\ 6.5.30_cdimages/Overlays2.image tmp
-cp -a tmp ovl2
-umount tmp
-mount -o loop -t efs Irix\ 6.5.30_cdimages/Overlays3.image tmp
-cp -a tmp ovl3
-umount tmp
+cp -a tmp f2 && umount tmp
 ```
 
+Development foundation and libraries
+```
+mount -o loop -t efs IRIX\ 6.5\ Development\ Foundation.img tmp
+cp -a tmp devf && umount tmp
+
+mount -o loop -t efs IRIX\ 6.5\ Development\ Libraries.img tmp
+cp -a tmp devl && umount tmp
+```
+
+6.5.30 applications and overlays
+```
+unzip "Irix 6.5.30_cdimages.zip"
+mount -o loop -t efs Irix\ 6.5.30_cdimages/Applications.image tmp/
+cp -a tmp apps && umount tmp
+
+mount -o loop -t efs Irix\ 6.5.30_cdimages/Complementary_Applications.image tmp
+cp -a tmp capps && umount tmp
+
+mount -o loop -t efs Irix\ 6.5.30_cdimages/Instalation_Tools_and_Overlays1.image tmp
+cp -a tmp ovl1 && umount tmp
+
+mount -o loop -t efs Irix\ 6.5.30_cdimages/Overlays2.image tmp
+cp -a tmp ovl2 && umount tmp
+
+mount -o loop -t efs Irix\ 6.5.30_cdimages/Overlays3.image tmp
+cp -a tmp ovl3 && umount tmp
+```
+
+Move directories to the tftpd directory tree
 ```
 mv devl devf f1 f2 /home/irix/i/
 mv apps capps ovl1 ovl2 ovl3 /home/irix/i/30/
@@ -64,9 +72,14 @@ Edit /etc/bootptab
 challengeip=192.168.2.177
 ```
 
+Configure networking manually
 ```
 systemctl stop NetworkManager
 ip addr add 192.168.2.5/24
+```
+
+SGI Indys can't cope with port numbers greater than 32767 or path-MTU discovery.
+```
 echo 1 > /proc/sys/net/ipv4/ip_no_pmtu_disc
 echo "2048 32767" > /proc/sys/net/ipv4/ip_local_port_range
 ```
