@@ -178,3 +178,11 @@ IRIX indy1 6.5 6.5.22m 10070055 IP22
 * [SGI graphics Frequently Asked Questions (FAQ)](https://www.opennet.ru/docs/FAQ/OS/SGI/graphics.html)
 * [Using the Command (PROM) Monitor](http://csweb.cs.wfu.edu/~torgerse/Kokua/SGI/007-2859-021/sgi_html/ch09.html)
 * [Indy NVRAM MAC Programming](https://wiki.preterhuman.net/Indy_NVRAM_reprogramming)
+* http://www.sgidepot.co.uk/6.5inst.html
+* http://www.sgidepot.co.uk/byte.html
+* [Fsn file manager (Wikipedia)](https://en.wikipedia.org/wiki/Fsn_(file_manager))
+* [3D glasses for a SGI](https://www.geektechnique.org/projectlab/851/making-3d-glasses-for-a-silicon-graphics.html)
+* http://www.sgistuff.net/hardware/systems/documents/007-9804-060-indy.pdf
+* http://www.sgistuff.net/hardware/systems/documents/007-2314-005-challenges.pdf
+* http://www.computinghistory.org.uk/det/11261/SGI-Indy/
+
