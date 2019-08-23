@@ -1,4 +1,8 @@
 # IRIX
+
+This wiki is a bit of a mess at the moment, but, hey, better than nothing!
+This should be split up into several pages, rather than this big one...
+
 ## Directories
 | What | Where | Description |
 |------|-------|-------------|
@@ -31,6 +35,7 @@ List enabled and disabled services and daemons:
 One can for example directly install a `tardist` file either by:
 ```
 inst -f <foo.tardist>
+Inst > go
 ``` 
 Or by invoking:
 ```
@@ -54,12 +59,100 @@ SGI boxen boot into something called the Command Monitor, which is equivalent to
 * Run Diagnostics
 * Recover System
 * Enter Command Monitor
-* Selct Keyboard Layout
+* Select Keyboard Layout
 
 By selecting *Enter Command Monitor*, you will land in the PROM CLI, which allows you to set up boot partitions, debug the system, and program NVRAM.
 
 ## NVRAM MAC Recovery
 TODO
+
+# Customisation
+
+## Timezone
+The simplest way to configure the timezone is to run the language configuration program from the *toolchest*. It can be found under *Desktop->Customize->Language*. This will also take daylight savings into account, and the resulting timezone string in `/etc/TIMEZONE` will be impressively complex.
+
+You can of course edit the `TZ` variable in `/etc/TIMEZONE` by hand, but let me tell you, the syntax is baffling:
+```
+stdoffset<b>[dst<b>[offset<b>],[start<b>[/time<b>],end<b>[/time<b>]]]
+```
+Where 
+* `std` and optionally `dst` is the timezone abbreviation for standard time (e.g `CET`, `BST` and so on) and daylight savings time respectively.
+* `offset` is the number of hours we're away from [UTC](https://en.wikipedia.org/wiki/Coordinated_Universal_Time), be it positive or negative, and can contain hours and optionally minutes and secondds (`hh<b>[:mm<b>[:ss<b>]]`)
+* `start/time,end/time` specifies when to switch to and switch back from daylight savings, in three different formats. See the `environ(5)` manpage.
+
+The string produced by the language configuration program for Sweden is `CET-1CEST-2,M3.5.0/2,M10.5.0/3`. I read this as
+* Standard time = `CET` (Central European Time) which is `UTC` minus 1 hour
+* Daylight Savings = `CEST` (Central European Standard Time) which `UTC` minus two hours
+* Daylight savings starts on the first (0th) weekday of the last (5th) week of the third month (March)
+* Daylight savings ends on the first (0th) weekday of the last (5th) week of the tenth month (October)
+* I have no idea what `/2` and `/3` mean, haha!
+
+I encourage you to explore the timezone files in `/usr/lib/locale/TZ/`, they're actually full of fascinating source material and historical information about how different countries came to have the time schemes that they have. See also the last reference ("Guide for setting up TIMEZONE") for more excruciating details.
+
+#### References
+
+* `/usr/lib/locale/TZ/` timezone files
+* [IRIX (R) Admin System Configuration and Operation (008-2859-005)](https://irix7.com/techpubs/007-2859-005.pdf])
+* [Guide for setting up TIMEZONE settings in IRIX 6.x](http://cspry.co.uk/computing/Indy_admin/TIMEZONE.html)
+* [environ(5)](http://nixdoc.net/man-pages/IRIX/man5/environ.5.html) manpage
+
+## Toolchest
+Toolchest is the name of the main menu program on the [IRIX Interactive Desktop](https://en.wikipedia.org/wiki/IRIX_Interactive_Desktop). It's located on the upper left corner of the standard desktop, and consists of a number of menus and submenus.
+
+### Customising The Toolchest
+The `toolchest` program is automatically launched from FOO, and reads a number of configuration files:
+
+|Path|Purpose|
+|----|-------|
+|`/usr/lib/X11/system.chestrc`|The system-wide default menu|
+|`/usr/lib/X11/app-chests/*.chest`|Additional configuration files which are added to the system-default menu|
+|`$HOME/.chestrc`|User-specific default menu, which *overrides* the aforementioned system-wide configuration|
+|`$HOME/.auxchestrc`|User-specific configuration, which is *added* to the aforementioned configurations|
+|`/usr/lib/X11/remote.chestrc|`|Alternate configuration file used by remote logins (via `/usr/sbin/accessworkstation` or `Toolchest->Desktop->Accessfiles`)|
+|`/usr/lib/X11/app-defaults/Toolchest`|System-wide `.resource` file|
+
+In practice, you probably just want to edit `/usr/lib/X11/system.chestrc` to get rid of unwanted defaults, and then add your own menus via `$HOME/.auxchestrc`. The configuration file format is quite flexible and won't seem that outlandish if you've used something like *fluxbox* or *pekwm*. Editing the main configuration file should give you a good idea on how to customize your menu, but here's an example:
+
+```
+# Create a menu containing some items. This will be automatically added to the top-level menu, ToolChest
+Menu FooBar
+{   
+	# Invoke xmessage when you click on 'Say Hello'
+	"Say Hello"  f.checkexec.sh "/usr/bin/X11/xmessage Hello"
+    
+    # Add a separator
+	no-label  f-separator
+    
+	# Same as above, but show an animation (le = launch effect) when launched
+    "Say Hello With Effect"  f.checkexec.sh.le "/usr/bin/X11/xmessage Hello" 
+    
+    # Add a separator    
+    no-label  f-separator
+    
+    # Add a reference to a submenu
+    "Hax" f.menu Hax
+}
+
+Menu Hax
+{
+    "XLoad" f.checkexec.sh.le "/usr/bin/X11/xload"
+}
+
+# Add a simple button to the end of the top-level menu
+Menu ToolChest
+{
+	"Ladida" f.checkexec.sh.le "/usr/bin/X11/xmessage Ladida" 
+}
+```
+
+I've not yet figured out *what* actually launches `toolchest` (or anyt other  default components of the desktop to be honest), so that's a pending task. Having a version of `grep` that supports the `-r` (recursive) option sure would be helpful ;)
+The *resource* file can probably be used to modify some standard options (see the manpage) as well.
+
+
+#### References
+
+* [IRIX Interactive Desktop](https://en.wikipedia.org/wiki/IRIX_Interactive_Desktop) on wikipedia
+* [Toolchest(1X)](http://nixdoc.net/man-pages/IRIX/man1/toolchest.1.html) manpage#
 
 # Machine specifics
 
@@ -168,21 +261,65 @@ IRIX indy1 6.5 6.5.22m 10070055 IP22
 ...
 ```
 
-# Resources
-* http://www.sgidepot.co.uk/sgi.html
-* https://irix.cc
+# Poorly Sorted References
+
+### Command Monitor (PROM)
+* http://csweb.cs.wfu.edu/~torgerse/Kokua/SGI/007-2859-021/sgi_html/ch09.html
+* [Indy NVRAM reprogramming](https://wiki.preterhuman.net/Indy_NVRAM_reprogramming)
+
+### SGI
+* [SGI FAQ](https://www.opennet.ru/docs/FAQ/OS/SGI/graphics.html)
+* [SGI in Hollywood and Gaming](http://www.sgistuff.net/funstuff/hollywood/index.html)
+* [SGI Advice and Technical Data](http://www.sgidepot.co.uk/sgi.html)
+* [http://www.computinghistory.org.uk/det/11261/SGI-Indy/](SGI Indy Information) on computinghistory.org
+* [3D glasses for SGI](https://www.geektechnique.org/projectlab/851/making-3d-glasses-for-a-silicon-graphics.html)
+* [The IRIX Network](https://irix.cc) - community-driven forum (still active in of 2019)
+* [SGI graphics Frequently Asked Questions (FAQ)](https://www.opennet.ru/docs/FAQ/OS/SGI/graphics.html)
+
+### IRIX
+
+#### General (unsorted)
+* [IRIX 6.2 Technical Report](http://www.sgistuff.net/software/irixintro/documents/irix6.2TR.html) (specs, ABI, standards, filesystems, ...)
+* [Helpful commands in IRIX](https://wiki.preterhuman.net/Helpful_commands_in_IRIX)
+* [MOTIF FAQ](https://babbage.cs.qc.cuny.edu/courses/GUIDesign/motif-faq.html#130) (useful for build problems relating to [Motif](https://en.wikipedia.org/wiki/Motif_(software)))
+* [MIPSPro Compiler Suite](https://web.archive.org/web/20180512081605/http://www.nekochan.net/wiki/MIPSpro) wiki entry on NekoChan
+* [IRIS/IRIX System Administration Environment Variables](http://retrogeeks.org/sgi_bookshelves/SGI_EndUser/books/IRIX_EnvVar/sgi_html/ch02.html)
+* [Guide for configuring an SGI Indy with IRIX 6.5](https://cspry.co.uk/computing/Indy_admin/configuration.html) ("Idiot's guide")
+* [Denag](https://github.com/dcantrell/denag) - get rid of the MIPSPro license nag screen
+* [Use Custom Background on Irix](https://wiki.preterhuman.net/Use_Custom_Background_on_Irix)
+* [IRIX Interactive Desktop](https://en.wikipedia.org/wiki/IRIX_Interactive_Desktop) on Wikipedia
+* [XLI package description](https://web.archive.org/web/20100120130550/http://freeware.sgi.com/Installable/xli-1.16-sgipl1.html)
 * [Building IRIX tardists](https://vanalboom.org/node/7)
 * [xli-1.16: description + notes](https://web.archive.org/web/20100120130550/http://freeware.sgi.com/Installable/xli-1.16-sgipl1.html)
 * [BACKGROUND(1)](http://nixdoc.net/man-pages/IRIX/man1/background.1.html)
 * [Use Custom Background on Irix](https://wiki.preterhuman.net/Use_Custom_Background_on_Irix)
-* [SGI graphics Frequently Asked Questions (FAQ)](https://www.opennet.ru/docs/FAQ/OS/SGI/graphics.html)
 * [Using the Command (PROM) Monitor](http://csweb.cs.wfu.edu/~torgerse/Kokua/SGI/007-2859-021/sgi_html/ch09.html)
 * [Indy NVRAM MAC Programming](https://wiki.preterhuman.net/Indy_NVRAM_reprogramming)
-* http://www.sgidepot.co.uk/6.5inst.html
-* http://www.sgidepot.co.uk/byte.html
-* [Fsn file manager (Wikipedia)](https://en.wikipedia.org/wiki/Fsn_(file_manager))
-* [3D glasses for a SGI](https://www.geektechnique.org/projectlab/851/making-3d-glasses-for-a-silicon-graphics.html)
-* http://www.sgistuff.net/hardware/systems/documents/007-9804-060-indy.pdf
-* http://www.sgistuff.net/hardware/systems/documents/007-2314-005-challenges.pdf
-* http://www.computinghistory.org.uk/det/11261/SGI-Indy/
+* [Fsn file manager](https://en.wikipedia.org/wiki/Fsn_(file_manager)) on Wikipedia
+* [MIPS R5000: fast, Affordable 3-D](http://www.sgidepot.co.uk/byte.html) (Byte Magazine aricle, May 1996)
+
+
+#### Install
+* [irixboot](https://github.com/halfmanhalftaco/irixboot) debian-based [Vagrant](https://en.wikipedia.org/wiki/Vagrant_(software)) box with bootp + tftpd
+* [Remote, network installation of SGI IRIX 6.5](http://techpubs.spinlocksolutions.com/irix/remote-irix-6.5-installation-from-linux.html) from a GNU/Linux install server
+* [Installation Guide for SGI IRIX](http://rmni.iqfr.csic.es/guide/man/instguide/contents.htm)
+* [Installing IRIX over the network](https://software.majix.org/irix/install-network.shtml)
+* [Booting IRIX Installation from CD](https://software.majix.org/irix/install-bootcd.shtml)
+* [Installation Guide](http://www.sgistuff.net/software/tipstricks/guide_install.html) Tips & Tricks
+* [Getting an Indy Desktop](https://blog.pizzabox.computer/posts/getting-an-indy-desktop/) (replacing disk with SD card, partitioning, netboot, install)
+* [Installing IRIX 6.5](http://www.futuretech.blinkenlights.nl/6.5inst.html) ([mirror](http://www.sgidepot.co.uk/6.5inst.html))
+* [Scratch install of IRIX 6.5 Base Release](http://rmni.iqfr.csic.es/guide/man/instguide/chap3-5.htm)
+* [Scratch install of IRIX 6.5 Base + 6.5.3 Intermediate Release](http://rmni.iqfr.csic.es/guide/man/instguide/chap3-6.htm)
+
+##### Software
+* [SGI/IRIX CDs](https://jrra.zone/sgi/)
+* [IRIX File Archive](http://retrogeeks.org/sgi/files) (mostly production software like Adobe Photoshop)
+* [Index of /nekoware/nekoware-mips3/current/](http://nekofiles.irixnet.org/nekoware/nekoware-mips3/current/) NekoWare tardist mirror
+* [efs2tar](https://github.com/sophaskins/efs2tar/tree/master/efs), a utility for converting efs images (i.e `.img`-files found on archive.org) to tarballs. See also [A yak shave with SGI's EFS](https://blog.pizzabox.computer/posts/sgi-efs-yakshave/)
+* [ports.sgi.sh](http://ports.sgi.sh/) - some useful ported software, such as [GCC](https://en.wikipedia.org/wiki/GNU_Compiler_Collection) along with binutils, and python3.5. See also the [SGIDEV Network Wiki](http://www.sgidev.org/wiki/IRIX_Binaries.html)
+* [Simple ports system for IRIX that's designed to be able to run on a fresh install.](https://github.com/larb0b/irixports)
+* [WinWorld IRIX Software Mirror](https://winworldpc.com/product/irix/65) (IRIX install CD's and patches)
+
+##### Parts
+* [Ian's SGI Depot](http://www.sgidepot.co.uk/sgidepot/partsspares.html#INDY)
 
