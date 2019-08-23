@@ -43,8 +43,8 @@ There seem to be a plethora of other commands, most of which we haven't tested y
 `versions`, `showfiles`, `showprods`.
 
 ## Random jazz
-IRIX 6.5.22 uses a crypt() implementation from 1988. A 31 years old
-rock solid DES and Enigma implementation.
+* IRIX 6.5.22 uses a crypt() implementation from 1988 including support for DES and Enigma
+* You'l likely want a DIN-8 to DB9 adapter to connect an Indy or Challenge S to a serial terminal
 
 # Bootup & Command Monitor (PROM)
 SGI boxen boot into something called the Command Monitor, which is equivalent to Sun's OpenBoot, which itself was a precursor to EFI. The equivalent on a PCI before EFI would be the BIOS. As with these systems, the purpose of the command monitor is to configure the basic system, and boostrap an operating system from disk or network. You can recognise the command monitor: it appears as a single terminal in the middle of the screen during bootup. You can enter the command monitor startup menu by pressing `ESC` at the start of bootup, or, on some PROMs, click on the `Stop for Maintenance` button during the `Starting up the system...` popup. You will then be presented with a  number of options, such as
@@ -67,7 +67,7 @@ TODO
 TODO: Install OS
 
 Basically a server version of an Indy. Does not have an installed graphics card.
-Connect using serial terminal, e.g. `cu -s 9600 -l /dev/cuaU0`.
+Connect to the machine by using a serial terminal: `cu -s 9600 -l /dev/cuaU0`.
 
 ```
 >> hinv
