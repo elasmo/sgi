@@ -294,6 +294,7 @@ IRIX indy1 6.5 6.5.22m 10070055 IP22
 * [BACKGROUND(1)](http://nixdoc.net/man-pages/IRIX/man1/background.1.html)
 * [Use Custom Background on Irix](https://wiki.preterhuman.net/Use_Custom_Background_on_Irix)
 * [Using the Command (PROM) Monitor](http://csweb.cs.wfu.edu/~torgerse/Kokua/SGI/007-2859-021/sgi_html/ch09.html)
+* [prom(1) manual page](https://nixdoc.net/man-pages/IRIX/man1/prom.1.html)
 * [Indy NVRAM MAC Programming](https://wiki.preterhuman.net/Indy_NVRAM_reprogramming)
 * [Fsn file manager](https://en.wikipedia.org/wiki/Fsn_(file_manager)) on Wikipedia
 * [MIPS R5000: fast, Affordable 3-D](http://www.sgidepot.co.uk/byte.html) (Byte Magazine aricle, May 1996)
@@ -310,6 +311,8 @@ IRIX indy1 6.5 6.5.22m 10070055 IP22
 * [Installing IRIX 6.5](http://www.futuretech.blinkenlights.nl/6.5inst.html) ([mirror](http://www.sgidepot.co.uk/6.5inst.html))
 * [Scratch install of IRIX 6.5 Base Release](http://rmni.iqfr.csic.es/guide/man/instguide/chap3-5.htm)
 * [Scratch install of IRIX 6.5 Base + 6.5.3 Intermediate Release](http://rmni.iqfr.csic.es/guide/man/instguide/chap3-6.htm)
+* [Installing IRIX 6.5 Across a Network](http://www.futuretech.blinkenlights.nl/netboot.html) 
+* [Installing IRIX 6.5](http://www.futuretech.blinkenlights.nl/6.5inst.html)
 
 ##### Software
 * [SGI/IRIX CDs](https://jrra.zone/sgi/)
