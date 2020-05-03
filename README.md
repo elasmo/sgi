@@ -22,11 +22,22 @@ List enabled and disabled services and daemons:
 
 `chkconfig`
 
+Display network interface information:
+
+`netstat -ian`
+
+Change the primary network interface:
+```
+vi /etc/config/netif.options
+...
+if1name=ec3
+...
+```
 ## Various IRIX Commands
 | Command | Example | Description |
 |---------|---------|-------------|
 | `uname` | `uname -R` | Get release name |
-| `hinv` | `hinv` | List hardware inventory |
+| `hinv` | `hinv` | List hardware inventory. Use `-vv` for details |
 | `nvram` | `nvram` | List NVRAM variables (including MAC address) |
 
 ## Packages
