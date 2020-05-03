@@ -209,10 +209,9 @@ PANIC: vfs_mountroot: no root found
 
 At this point I have partitioned the disk using fx.ARCS with `auto` and the `sync` commands.
 Not sure if the latter is needed.
-
-The above dodn't seem to work, so let's try install directly from the systems menu:
-
-``
+Loading `/i/22/ovl1/dist/miniroot/unix.IP22` didn't work anyway. I had more success installing
+from the system maintainance menu:
+```
 System Maintenance Menu
 
 1) Start System
@@ -283,7 +282,7 @@ Make new file system on /dev/dsk/realroot [yes/no/sh/help]: yes
 ...
 ```
 
-From this point it were something like:
+From this point it went roughly like this:
 ```
 from ..
 open ..
