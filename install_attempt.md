@@ -1,3 +1,8 @@
+# What is this?
+This is some sloppy laid out notes taken during installation of IRIX. 
+Worth mentioning is that i used the images from IRIX 6.5.22 rather than
+6.5.30 for the Challenge S machine.
+
 # Bootp server preperations
 ## Unpack warezz
 
@@ -67,14 +72,16 @@ bootps		dgram	udp	wait	root	/usr/sbin/bootpd	bootpd -i -t 120
 tftp		dgram	udp	wait	nobody	/usr/sbin/tcpd	/usr/sbin/in.tftpd /srv/tftp
 ```
 
-XXX: I didn't have any success with `tftpd` - install `atftpd` instead.
+Important: I didn't have any success at all with the `tftpd` package. Using `atftpd` instead
+worked fine. I'm not usre why.
 
 Edit /etc/bootptab
 ```
-challengeip=192.168.2.177
+challenge:ip=192.168.2.177
 ```
 
-Configure networking manually
+If you have anything automagically trying to "help you"
+stop these and running the tftp server and sgi machine on a temporary local network.
 ```
 systemctl stop NetworkManager
 ip addr add 192.168.2.5/24
