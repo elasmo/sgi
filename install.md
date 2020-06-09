@@ -1,3 +1,4 @@
+# IRIX installation
 What follows are some sloppy laid out notes taken during an IRIX installation.
 It may be somewhat inconsistent, but hopefully helpful enough to reproduce.
 I used the IRIX 6.5.22 images for SGI Challenge S. You may want to use something
