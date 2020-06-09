@@ -1,10 +1,10 @@
-# What is this?
-This is some sloppy laid out notes taken during installation of IRIX. 
-Worth mentioning is that i used the images from IRIX 6.5.22 rather than
-6.5.30 for the Challenge S machine.
+What follows are some sloppy laid out notes taken during an IRIX installation.
+It may be somewhat inconsistent, but hopefully helpful enough to reproduce.
+I used the IRIX 6.5.22 images for SGI Challenge S. You may want to use something
+more recent.
 
-# Bootp server preperations
-## Unpack warezz
+# Bootp server preparations
+## Unpacking images
 
 Foundation, part 1 and 2
 ```
@@ -50,6 +50,7 @@ mv apps capps ovl1 ovl2 ovl3 /home/irix/i/30/
 ```
 
 ## Configuration
+**Install mksh and add irix user**
 ```
 apt install mksh
 adduser --home /home/irix --shell /bin/mksh --system --group --disabled-password --gecos 'SGI IRIX' irix
@@ -61,30 +62,31 @@ ln -sf /home/irix/i /srv/tftp/i
 mkdir /home/irix/i/30
 ```
 
+**Install packages**
 ```
 apt-get install openbsd-inetd bootp tftpd rsh-redone-server rsh-redone-client
 ```
 
-Edit /etc/inetd.conf
+**Edit /etc/inetd.conf**
 ```
 shell		stream	tcp	nowait	root	/usr/sbin/tcpd	/usr/sbin/in.rshd
 bootps		dgram	udp	wait	root	/usr/sbin/bootpd	bootpd -i -t 120
 tftp		dgram	udp	wait	nobody	/usr/sbin/tcpd	/usr/sbin/in.tftpd /srv/tftp
 ```
 
-Important: I didn't have any success at all with the `tftpd` package. Using `atftpd` instead
-worked fine. I'm not usre why.
+Important note: I didn't have any success with the `tftpd` package (Debian 10). Using `atftpd`
+instead worked fine. Not sure why. It can be setup in the same way as `tftpd`.
 
-Edit /etc/bootptab
+**Edit /etc/bootptab**
 ```
 challenge:ip=192.168.2.177
 ```
 
-If you have anything automagically trying to "help you"
-stop these and running the tftp server and sgi machine on a temporary local network.
+**Network configuration**
+The server is setup on a temporary local network connected to the same network
+switch as the SGI machine.
 ```
-systemctl stop NetworkManager
-ip addr add 192.168.2.5/24
+ip address add 192.168.2.5/24
 ```
 
 SGI Indys can't cope with port numbers greater than 32767 or path-MTU discovery.
@@ -93,29 +95,19 @@ echo 1 > /proc/sys/net/ipv4/ip_no_pmtu_disc
 echo "2048 32767" > /proc/sys/net/ipv4/ip_local_port_range
 ```
 
+**Enable and start inetd**
 ```
 systemctl enable inetd
 systemctl start inetd
 ```
 
-Connect to SGI Challenge S
+**Connect to SGI serial terminal**
 ```
 # cu -s 9600 -l /dev/cuaU0
 ...
 >> setenv netaddr 192.168.2.177
 >> bootp():i/30/ovl1/stand/sash64
-ec0: ethernet cable problem
-ec0: ethernet cable problem
-ec0: ethernet cable problem
-ec0: ethernet cable problem
-No server for :i/30/ovl1/stand/sash64.  
-Your netaddr environment variable may be set incorrectly, or
-the net may be too busy for a connection to be made.
-Unable to execute bootp():i/30/ovl1/stand/sash64
-```
-
-Somewhat more successful attempt:
-```
+...
 System Maintenance Menu
 
 1) Start System
@@ -214,7 +206,7 @@ PANIC: vfs_mountroot: no root found
 [Press reset to restart the machine.]
 ```
 
-At this point I have partitioned the disk using fx.ARCS with `auto` and the `sync` commands.
+At this point I have partitioned the disk using fx.ARCS with `auto` and `sync`.
 Not sure if the latter is needed.
 Loading `/i/22/ovl1/dist/miniroot/unix.IP22` didn't work anyway. I had more success installing
 from the system maintainance menu:
@@ -301,7 +293,7 @@ go
 exit
 ```
 
-For the system to find the bootloader I neeed to go into the command monitor and..:
+For the system to find the bootloader I neeed to go into the command monitor and:
 ```
 >> setenv OSLoader sash
 ```
