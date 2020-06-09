@@ -3,10 +3,13 @@ It may be somewhat inconsistent, but hopefully helpful enough to reproduce.
 I used the IRIX 6.5.22 images for SGI Challenge S. You may want to use something
 more recent.
 
-# Bootp server preparations
-## Unpacking images
+* 192.168.2.5 is the server hosting installation files
+* 192.168.2.177 is the SGI machine
+* A laptop is used to connect to the SGI serial terminal
 
-Foundation, part 1 and 2
+# Server preparations
+## Unpacking images
+**Foundation, part 1 and 2**
 ```
 mount -o loop -t efs IRIX\ 6.5\ Foundation\ 1.img tmp
 cp -a tmp f1 && umount tmp
@@ -15,7 +18,7 @@ mount -o loop -t efs IRIX\ 6.5\ Foundation\ 2.img tmp
 cp -a tmp f2 && umount tmp
 ```
 
-Development foundation and libraries
+**Development foundation and libraries**
 ```
 mount -o loop -t efs IRIX\ 6.5\ Development\ Foundation.img tmp
 cp -a tmp devf && umount tmp
@@ -24,7 +27,7 @@ mount -o loop -t efs IRIX\ 6.5\ Development\ Libraries.img tmp
 cp -a tmp devl && umount tmp
 ```
 
-6.5.30 applications and overlays
+**6.5.30 applications and overlays**
 ```
 unzip "Irix 6.5.30_cdimages.zip"
 mount -o loop -t efs Irix\ 6.5.30_cdimages/Applications.image tmp/
@@ -43,7 +46,7 @@ mount -o loop -t efs Irix\ 6.5.30_cdimages/Overlays3.image tmp
 cp -a tmp ovl3 && umount tmp
 ```
 
-Move directories to the tftpd directory tree
+**Move directories to the tftpd directory tree**
 ```
 mv devl devf f1 f2 /home/irix/i/
 mv apps capps ovl1 ovl2 ovl3 /home/irix/i/30/
@@ -74,8 +77,9 @@ bootps		dgram	udp	wait	root	/usr/sbin/bootpd	bootpd -i -t 120
 tftp		dgram	udp	wait	nobody	/usr/sbin/tcpd	/usr/sbin/in.tftpd /srv/tftp
 ```
 
-Important note: I didn't have any success with the `tftpd` package (Debian 10). Using `atftpd`
-instead worked fine. Not sure why. It can be setup in the same way as `tftpd`.
+Important note: I didn't have any success with the `tftpd` package (Debian 10). 
+Using `atftpd` instead worked fine. Not sure why. It can be setup in the same 
+way as `tftpd`.
 
 **Edit /etc/bootptab**
 ```
@@ -83,13 +87,15 @@ challenge:ip=192.168.2.177
 ```
 
 **Network configuration**
+
 The server is setup on a temporary local network connected to the same network
 switch as the SGI machine.
 ```
 ip address add 192.168.2.5/24
 ```
 
-SGI Indys can't cope with port numbers greater than 32767 or path-MTU discovery.
+Disable Path MTU Discovery and set host to not use ports over 32767 as Indy's
+doesn't support this.
 ```
 echo 1 > /proc/sys/net/ipv4/ip_no_pmtu_disc
 echo "2048 32767" > /proc/sys/net/ipv4/ip_local_port_range
